@@ -5,7 +5,8 @@ export class Register {
         public emailConfirm: string,
         public passwordConfirm: string,
         public password: string,
-        public username: string
+        public username: string,
+        public receiveEmail: boolean
       ) {  }
 
 }
