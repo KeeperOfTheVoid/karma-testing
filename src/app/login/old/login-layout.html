@@ -1,0 +1,14 @@
+<div class="login-view">
+    <div ng-include="'views/login/forms/login-form.html'"
+         ng-show="login.isLogin"
+         class="animated"
+         ng-class="login.isLogin ? 'fadeIn' : 'hidden'"></div>
+    <div ng-include="'views/login/forms/register-form.html'"
+         ng-show="!login.isLogin && !login.isForgotPassword"
+         class="animated"
+         ng-class="(!login.isLogin && !login.isForgotPassword) ? 'fadeIn' : 'hidden'"></div>
+    <div ng-include="'views/login/forms/forgot-password-form.html'"
+         ng-show="login.isForgotPassword"
+         class="animated"
+         ng-class="login.isForgotPassword ? 'fadeIn' : 'hidden'"></div>
+</div>
