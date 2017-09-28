@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 
+import { Login } from './model/login';
+import { Register } from './model/register';
+
 @Component({
   selector: 'login',
   templateUrl: './login.component.html',
@@ -10,23 +13,23 @@ export class LoginComponent implements OnInit {
   DEFAULT_REGISTRATION_ERROR = 'There was an error registering as a new user. Please try again.';
 
   // Error messages
-  loginError = undefined;
-  registerError = undefined;
-  forgotPasswordError = undefined;
-  forgotPasswordResponse = undefined;
+  loginError: string = undefined;
+  registerError: string = undefined;
+  forgotPasswordError: string = undefined;
+  forgotPasswordResponse: string = undefined;
 
   // Form models
-  login = {};
-  register = {};
+  login = new Login(null,null);
+  register = new Register(null, null, null, null, null);
   forgotPassword = {};
 
   // Flags
-  isLogin = true;
-  isRegister = false;
-  isForgotPassword = false;
-  disableSubmit = false;
-  promoCheckbox = true;
-  recaptchaLoaded = false;
+  isLogin: boolean = true;
+  isRegister: boolean = false;
+  isForgotPassword: boolean = false;
+  disableSubmit: boolean = false;
+  promoCheckbox: boolean = true;
+  recaptchaLoaded: boolean = false;
 
   // Public methods available to the HTML
   /* submitLogin = submitLogin;
@@ -61,34 +64,36 @@ export class LoginComponent implements OnInit {
     this.isForgotPassword = false;
   }); */
 
-   /* clearLoginForm() {
-    this.login = {};
+   clearLoginForm() {
+    this.login = new Login(null,null);
     this.loginError = undefined;
     if (this.loginForm) {
       this.login.username = '';
-      this.loginForm.$setPristine();
-      this.loginForm.$setUntouched();
+      // TODO Find correct way to do this
+      /* this.loginForm.$setPristine();
+      this.loginForm.$setUntouched(); */
     }
   }
 
   clearRegisterForm() {
-    this.register = {};
+    this.register = new Register(null,null,null,null, null);
     this.registerError = undefined;
   if (this.registerForm) {
     this.register.emailAddress = '';
     this.register.emailConfirm = '';
     this.register.password = '';
     this.register.passwordConfirm = '';
-    this.registerForm.$setPristine();
-    this.registerForm.$setUntouched();
+    // TODO Find correct way to do this
+    /* this.registerForm.$setPristine();
+    this.registerForm.$setUntouched(); */
   }
-} */
+}
 
 /**
  * Clears the forgot password form AND
  * resets the recaptcha.
  */
-/* function clearForgotPasswordForm() {
+/* clearForgotPasswordForm() {
   login.forgotPassword = {};
   login.forgotPasswordError = undefined;
   if (login.forgotPassword) {
@@ -104,12 +109,12 @@ export class LoginComponent implements OnInit {
 /**
  * Handles log in request and handles errors. Should only contain emailAddress and password
  */
-/* function submitLogin() {
+ /* submitLogin() {
   //login.loadingTracker.addPromise(login.promise);
-  login.disableSubmit = true;
+  this.disableSubmit = true;
   // Invalidate current user
   AuthenticationService.invalidate();
-  AuthenticationService.login(login.login.username, login.login.password, login.loadingTracker)
+  AuthenticationService.login(this.login.username, this.login.password, login.loadingTracker)
     .then(loginSuccess)
     .catch(loginFailure);
 
@@ -121,7 +126,7 @@ export class LoginComponent implements OnInit {
     clearLoginForm();
   } */
 
-  /* function loginFailure(data) {
+  /* loginFailure(data) {
     login.disableSubmit = false;
     if (data.status == 401) {
       login.loginError = data.data.message[0].message;
@@ -138,32 +143,32 @@ export class LoginComponent implements OnInit {
 /**
  * Handles user registration request and handles errors. Should contain full object.
  */
-// function submitRegister() {
-//   login.disableSubmit = true;
-//   login.register.username = login.register.emailAddress;
-//   login.register.receiveEmail = login.promoCheckbox;
-//   CustomerService.register(login.register, login.loadingTracker)
-//     .then(registerSuccess)
-//     .catch(registerFail);
+/* submitRegister() {
+  this.disableSubmit = true;
+  this.register.username = this.register.emailAddress;
+  this.register.receiveEmail = login.promoCheckbox;
+  CustomerService.register(this.register, login.loadingTracker)
+    .then(registerSuccess)
+    .catch(registerFail); */
 
-//   function registerSuccess() {
-//     login.disableSubmit = false;
-//     login.login.username = login.register.username;
-//     login.login.password = login.register.password;
-//     submitLogin();
-//     clearRegisterForm();
-//   }
+  registerSuccess() {
+    this.disableSubmit = false;
+    this.login.username = this.register.username;
+    this.login.password = this.register.password;
+    //submitLogin();
+    this.clearRegisterForm();
+  }
 
-//   function registerFail(error) {
-//     $log.error(error);
-//     login.disableSubmit = false;
-//     if (error.data.duplicateEmailAddress) {
-//       login.registerError = DUPLICATE_EMAIL_ERROR;
-//     } else {
-//       login.registerError = DEFAULT_REGISTRATION_ERROR;
-//     }
-//   }
-// }
+  /* function registerFail(error) {
+    $log.error(error);
+    login.disableSubmit = false;
+    if (error.data.duplicateEmailAddress) {
+      login.registerError = DUPLICATE_EMAIL_ERROR;
+    } else {
+      login.registerError = DEFAULT_REGISTRATION_ERROR;
+    }
+  }
+} */
 
 /**
  * Submits the users request to reset the password.
@@ -189,30 +194,30 @@ export class LoginComponent implements OnInit {
 /**
  * Sets a boolean for the recaptcha being loaded.
  */
-/* function setWidgetId(widgetId) {
+setWidgetId(widgetId) {
   widgetId = widgetId;
-  recaptchaLoaded = true;
-} */
+  this.recaptchaLoaded = true;
+}
 
 /**
  * Toggles the forgot password view in the overlay
  * on/off.
  */
-/* function toggleForgotPassword() {
-  isLogin = false;
-  isForgotPassword = !isForgotPassword;
-} */
+ toggleForgotPassword() {
+  this.isLogin = false;
+  this.isForgotPassword = !this.isForgotPassword;
+}
 
 /**
  * Toggles the login/register views
  */
-/* function toggleView() {
-  clearRegisterForm();
-  clearLoginForm();
-  clearForgotPasswordForm();
-  isLogin = !isLogin;
-  isForgotPassword = false;
-} */
+ toggleView() {
+  this.clearRegisterForm();
+  this.clearLoginForm();
+  //clearForgotPasswordForm();
+  this.isLogin = !this.isLogin;
+  this.isForgotPassword = false;
+}
 
       /**
        * Toggles the overlay opened/closed
