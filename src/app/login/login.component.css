@@ -1,0 +1,115 @@
+/* .login-view {
+  $medium-view-breakpoint: 425px;
+
+  font-family: $secondary-font-family;
+
+  .basic-button {
+    background-color: $send-now-color;
+    border: none;
+    color: $white;
+    display: inline-block;
+    margin-bottom: 15px;
+    max-width: 100%;
+  }
+  .button-container{
+    position: relative;
+  }
+  .center-text {
+    text-align: center;
+  }
+  .spinner-shade{
+    height: 80%;
+  }
+  .submit-error, .submit-success{
+    font-size: em(15px);
+    font-weight: initial;
+    text-align: left;
+  }
+
+  button[disabled] {
+    background-color: $disabled-color;
+    cursor: default;
+  }
+
+  .login-form-container {
+    padding: 2px;
+  }
+
+  .input-field {
+    position: relative;
+    padding-bottom: 20px;
+
+    input {
+      border: 1px solid $accent-color;
+      color: $black;
+      height: 42px;
+      padding: 0 9px;
+      width: 100%;
+    }
+
+    div[ng-messages] {
+      position: absolute;
+      bottom: 0;
+    }
+  }
+  .guest-link {
+    color: $send-now-color;
+    font-weight: $thin;
+    padding-top: 20px;
+    text-align: center;
+    span{
+      border-bottom: 1px solid $send-now-color;
+      cursor: pointer;
+
+    }
+  }
+
+  .input-error {
+    color: $error-text-color;
+    font-size: em(14px);
+    padding: 5px 0 0 3px;
+    text-align: center;
+  }
+
+  .input-success {
+    color: $primary-color;
+    text-align: left;
+    padding: 5px 0 0 3px;
+  }
+
+  .login-links {
+    display: flex;
+    justify-content: space-between;
+  }
+  .recaptcha-container{
+    padding-bottom: 10px;
+
+    div{
+      margin: 0 auto !important;
+    }
+  }
+
+  .reset-button{
+    margin-top: 10px;
+  }
+
+
+  @include breakpoint($medium-view-breakpoint) {
+    .login-form-container {
+      padding: 0 50px 0 50px;
+    }
+    .login-links {
+      flex-flow: row nowrap;
+
+      a {
+        width: 50%;
+        text-align: left;
+      }
+
+      a:last-of-type {
+        text-align: right;
+      }
+    }
+  }
+}
+ */
