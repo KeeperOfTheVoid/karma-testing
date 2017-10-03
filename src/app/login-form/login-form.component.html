@@ -1,0 +1,60 @@
+<div class="water-color-container">
+  <div class="content-container">
+    <div class="header-text">LOG IN</div>
+    <div class="dots-short">
+      <img ng-src="/images/dots-short.png"/>
+    </div>
+    <div class="copy-text">Welcome Back to Blooms!</div>
+  </div>
+</div>
+<form class="login-form-container" name="login.loginForm"
+      ng-submit="login.submitLogin()"
+      novalidate>
+  <div id="login-error" class="submit-error" ng-show="login.loginError">
+    {{ login.loginError }}
+  </div>
+  <div class="input-field">
+    <input name="emailAddress"
+           type="email"
+           ng-model="login.login.username"
+           class="form-box"
+           placeholder="Email Address"
+           maxLength="40"
+           ng-maxlength="40"
+           email-validation
+           required/>
+    <div ng-messages="login.loginForm.emailAddress.$touched && login.loginForm.emailAddress.$error" role="alert">
+      <ng-messages-include src="views/login/login-errors.html"></ng-messages-include>
+    </div>
+  </div>
+
+  <div class="input-field">
+    <input name="password"
+           type="password"
+           ng-model="login.login.password"
+           class="form-box"
+           placeholder="Password"
+           maxLength="25"
+           ng-maxlength="25"
+           required/>
+    <div ng-messages="login.loginForm.password.$touched && login.loginForm.password.$error" role="alert">
+      <ng-messages-include src="views/login/login-errors.html"></ng-messages-include>
+    </div>
+  </div>
+  <div class="button-container">
+    <div class="spinner-shade" ng-show="login.loadingTracker.active()"></div>
+    <button type="submit"
+            ng-disabled="login.loginForm.$invalid || login.disableSubmit"
+            class="basic-button secondary-font">Log In
+    </button>
+  </div>
+  <div class="login-links">
+    <a ng-click="login.toggleForgotPassword()">Forgot Password?</a>
+    <a ng-click="login.toggleView()">Create an Account</a>
+  </div>
+  <div id="login-guest-link" class="guest-link" ng-show="login.state.includes('cart')" ng-click="login.toggleOverlay()">
+    <span>Or, Continue as Guest</span>
+  </div>
+</form>
+
+
