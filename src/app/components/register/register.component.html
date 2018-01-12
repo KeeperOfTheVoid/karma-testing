@@ -1,0 +1,8 @@
+<form [formGroup]="registerForm" class="form" (ngSubmit)="submitRegisterForm(registerForm.value)" novalidate>
+  <div class="input-field form-group">
+    <input class="input" formControlName="firstName" placeholder="First Name" />
+    <div *ngIf="registerForm.controls.firstName.errors?.required && registerForm.controls.firstName.touched" class="validation-error">
+      First Name is required
+    </div>
+  </div>
+</form>
