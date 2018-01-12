@@ -1,0 +1,123 @@
+// Color palette
+$black: #000;
+$white: #fff;
+$light-gray: #808080;
+$grey: #4d4d4d;
+$primary-color: #4286f4;
+$primary-color-dark: darken($primary-color, 10%);
+
+$disabled-color: #B9B9B9;
+$disabled-text-color: white;
+
+$default-button-color: #444;
+$submit-button-color: $primary-color-dark;
+$cancel-button-color: #e53935;
+
+$success-text-color: #4caf50;
+$error-text-color: #cf1211;
+
+$base-font-size: 16px;
+$bold: 600;
+
+.form {
+    .button,
+    .input:not([type=submit]):not([type=radio]),
+    .select {
+      box-sizing: border-box;
+      padding: 0 9px;
+      width: 100%;
+  
+      &:disabled {
+        border-color: $disabled-color;
+        color: $black;
+        cursor: not-allowed;
+      }
+    }
+  
+    .input:not([type=submit]):not([type=radio]),
+    .select {
+      border: 1px solid $grey;
+      height: 32px;
+    }
+  
+    .button {
+      background-color: $default-button-color;
+      color: $white;
+      letter-spacing: .5px;
+      line-height: 36px;
+      height: 36px;
+  
+      &:disabled,
+      &[type=submit]:disabled{
+        background-color: $disabled-color;
+        color: $disabled-text-color;
+      }
+    }
+  
+    .button[type=submit] {
+      background-color: $submit-button-color;
+    }
+  
+    // style for negative action on forms (i.e. cancel, delete, back, etc)
+    .cancel {
+      background-color: $cancel-button-color;
+    }
+  }
+
+  .input-field {
+    position: relative;
+    padding-bottom: 20px;
+    width: 100%;
+  
+    div[ng-messages],
+    span[ng-messages]{
+      position: absolute;
+      bottom: 0;
+      height: 20px;
+    }
+  }
+  
+  .input-bar {
+    display: flex;
+    justify-content: space-between;
+  
+    .input,
+    .input-field {
+      margin-right: 10px;
+    }
+  
+    .input:last-of-type,
+    .input-field:last-of-type {
+      margin-right: 0;
+    }
+  }
+  
+  .submit-success,
+  .submit-error {
+    font-size: 1.2em;
+    font-weight: bold;
+  }
+  
+  .submit-success {
+    color: $success-text-color;
+  }
+  
+  .submit-error {
+    color: $error-text-color;
+    padding-bottom: 5px;
+    text-align: center;
+  }
+  
+  .validation-success,
+  .validation-error {
+    font-size: em(14px);
+    padding-top: 2px;
+  }
+  
+  .validation-success {
+    color: $success-text-color;
+  }
+  
+  .validation-error {
+    color: $error-text-color;
+  }
