@@ -48,12 +48,20 @@ export class RegisterComponent implements OnInit {
   /**
    * Submits our Register Form
    * 
-   * Currently, just logs to console
+   * Currently, just sets our payload and logs to console
    */
   submitRegisterForm(post) {
+    const registerForm = {
+      firstName: post.firstName,
+      lastName: post.lastName,
+      email: post.email,
+      confirmEmail: post.confirmEmail,
+      password: post.password,
+      confirmPassword: post.confirmPassword
+    }
+
     console.log('We\'re submitting our register form!!');
-    console.log('Register Form', post);
-    
+    console.log('Register Form', registerForm);
   }
 
 }
