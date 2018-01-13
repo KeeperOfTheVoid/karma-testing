@@ -4,11 +4,17 @@
     <div *ngIf="registerForm.controls.firstName.errors?.required && registerForm.controls.firstName.touched" class="validation-error">
       First Name is required
     </div>
+    <div *ngIf="registerForm.controls.firstName.errors?.maxlength && registerForm.controls.firstName.touched" class="validation-error">
+      Max Length is 25
+    </div>
   </div>
   <div class="input-field form-group">
     <input class="input" formControlName="lastName" placeholder="Last Name" />
     <div *ngIf="registerForm.controls.lastName.errors?.required && registerForm.controls.lastName.touched" class="validation-error">
       Last Name is required
+    </div>
+    <div *ngIf="registerForm.controls.lastName.errors?.maxlength && registerForm.controls.lastName.touched" class="validation-error">
+      Max Length is 25
     </div>
   </div>
   <div class="input-field form-group">
@@ -16,11 +22,17 @@
     <div *ngIf="registerForm.controls.email.errors?.required && registerForm.controls.email.touched" class="validation-error">
       Email Address is required
     </div>
+    <div *ngIf="registerForm.controls.email.errors?.maxlength && registerForm.controls.email.touched" class="validation-error">
+      Max Length is 40
+    </div>
   </div>
   <div class="input-field form-group">
     <input class="input" formControlName="confirmEmail" placeholder="Confirm Email Address" />
     <div *ngIf="registerForm.controls.confirmEmail.errors?.required && registerForm.controls.confirmEmail.touched" class="validation-error">
       Please confirm your email
+    </div>
+    <div *ngIf="registerForm.controls.confirmEmail.errors?.maxlength && registerForm.controls.confirmEmail.touched" class="validation-error">
+      Max Length is 40
     </div>
   </div>
   <div class="input-field form-group">
@@ -28,11 +40,17 @@
     <div *ngIf="registerForm.controls.password.errors?.required && registerForm.controls.password.touched" class="validation-error">
       Password is required
     </div>
+    <div *ngIf="registerForm.controls.password.errors?.maxlength && registerForm.controls.password.touched" class="validation-error">
+      Max Length is 25
+    </div>
   </div>
   <div class="input-field form-group">
     <input class="input" formControlName="confirmPassword" placeholder="Confirm Password" type="password" />
     <div *ngIf="registerForm.controls.confirmPassword.errors?.required && registerForm.controls.confirmPassword.touched" class="validation-error">
       Please confirm your password
+    </div>
+    <div *ngIf="registerForm.controls.confirmPassword.errors?.maxlength && registerForm.controls.confirmPassword.touched" class="validation-error">
+      Max Length is 25
     </div>
   </div>
   <div class="button-container">
