@@ -219,4 +219,23 @@ describe('RegisterComponent', () => {
       }); 
     });
   });
+
+  describe('#clearForm', () => {
+    it('should clear the form', () => {
+      const testForm: RegisterForm = {
+        firstName: null,
+        lastName: null,
+        email: null,
+        confirmEmail: null,
+        password: null,
+        confirmPassword: null
+      }
+      component.registerForm.setValue(testRegisterForm);
+      fixture.detectChanges();
+      component.clearForm();
+      console.log(component.registerForm.value);
+      
+      expect(component.registerForm.value).toEqual(testForm);
+    });
+  });
 });

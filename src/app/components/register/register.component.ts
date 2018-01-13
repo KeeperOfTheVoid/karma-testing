@@ -21,6 +21,10 @@ export class RegisterComponent implements OnInit {
     this.initializeRegisterForm();
   }
 
+  clearForm() {
+    this.registerForm.reset();
+  }
+
   /**
    * Initializes Register Form
    *
@@ -62,6 +66,9 @@ export class RegisterComponent implements OnInit {
 
     console.log('We\'re submitting our register form!!');
     console.log('Register Form', registerForm);
+    console.log('Clearing form');
+    
+    this.clearForm();
   }
 
 }
